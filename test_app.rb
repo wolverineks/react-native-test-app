@@ -15,13 +15,13 @@ def resolve_module(request)
   return Pod::Executable.execute_command('node', ['-e', script], true).strip
 end
 
-def use_test_app!(package_root)
+def use_test_app!(project_root)
   platform :ios, '12.0'
 
   xcodeproj = 'ReactTestApp.xcodeproj'
-  if package_root != __dir__
+  if project_root != __dir__
     src_xcodeproj = File.join(__dir__, 'ios', xcodeproj)
-    destination = File.join(package_root, 'node_modules', '.generated')
+    destination = File.join(resolve_module('react-native-test-app'), '..', '.generated')
     dst_xcodeproj = File.join(destination, xcodeproj)
 
     # Copy/link Xcode project files
@@ -49,8 +49,8 @@ def use_test_app!(package_root)
 
   require_relative autolink_script_path
 
-  react_native = Pathname.new(resolve_module 'react-native')
-    .relative_path_from(Pathname.new(package_root))
+  react_native = Pathname.new(resolve_module('react-native'))
+    .relative_path_from(Pathname.new(project_root))
     .to_s
 
   target 'ReactTestApp' do
@@ -58,9 +58,14 @@ def use_test_app!(package_root)
     pod 'SwiftLint'
 
     # React Native
-    pod 'React', :path => react_native
-    pod 'React-Core', :path => "#{react_native}/React", :inhibit_warnings => true
-    pod 'React-DevSupport', :path => "#{react_native}/React"
+    pod 'FBLazyVector', :path => "#{react_native}/Libraries/FBLazyVector"
+    pod 'FBReactNativeSpec', :path => "#{react_native}/Libraries/FBReactNativeSpec"
+    pod 'RCTRequired', :path => "#{react_native}/Libraries/RCTRequired"
+    pod 'RCTTypeSafety', :path => "#{react_native}/Libraries/TypeSafety"
+    pod 'React', :path => "#{react_native}/"
+    pod 'React-Core', :path => "#{react_native}/", :inhibit_warnings => true
+    pod 'React-CoreModules', :path => "#{react_native}/React/CoreModules"
+    pod 'React-Core/DevSupport', :path => "#{react_native}/"
     pod 'React-RCTActionSheet', :path => "#{react_native}/Libraries/ActionSheetIOS"
     pod 'React-RCTAnimation', :path => "#{react_native}/Libraries/NativeAnimation"
     pod 'React-RCTBlob', :path => "#{react_native}/Libraries/Blob"
@@ -70,13 +75,15 @@ def use_test_app!(package_root)
     pod 'React-RCTSettings', :path => "#{react_native}/Libraries/Settings"
     pod 'React-RCTText', :path => "#{react_native}/Libraries/Text", :inhibit_warnings => true
     pod 'React-RCTVibration', :path => "#{react_native}/Libraries/Vibration"
-    pod 'React-RCTWebSocket', :path => "#{react_native}/Libraries/WebSocket"
+    pod 'React-Core/RCTWebSocket', :path => "#{react_native}/"
 
     pod 'React-cxxreact', :path => "#{react_native}/ReactCommon/cxxreact", :inhibit_warnings => true
     pod 'React-jsi', :path => "#{react_native}/ReactCommon/jsi"
     pod 'React-jsiexecutor', :path => "#{react_native}/ReactCommon/jsiexecutor"
     pod 'React-jsinspector', :path => "#{react_native}/ReactCommon/jsinspector"
-    pod 'yoga', :path => "#{react_native}/ReactCommon/yoga"
+    pod 'ReactCommon/jscallinvoker', :path => "#{react_native}/ReactCommon"
+    pod 'ReactCommon/turbomodule/core', :path => "#{react_native}/ReactCommon"
+    pod 'Yoga', :path => "#{react_native}/ReactCommon/yoga"
 
     pod 'DoubleConversion', :podspec => "#{react_native}/third-party-podspecs/DoubleConversion.podspec"
     pod 'glog', :podspec => "#{react_native}/third-party-podspecs/glog.podspec"
@@ -94,6 +101,6 @@ def use_test_app!(package_root)
       yield 'uitests'
     end
 
-    use_native_modules! '.'
+    use_native_modules!
   end
 end

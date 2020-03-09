@@ -6,14 +6,14 @@
     "build:ios": "mkdirp dist && react-native bundle --entry-file index.js --platform ios --dev true --bundle-output dist/main.jsbundle --assets-dest dist --reset-cache"
   },
   "peerDependencies": {
-    "react": "^16.8.6",
-    "react-native": "^0.60.6"
+    "react": "~16.8.6 || ~16.9.0",
+    "react-native": "^0.60.6 || ^0.61.5"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "mkdirp": "^0.5.1",
-    "react": "16.8.6",
-    "react-native": "0.60.6",
+    "react": "16.9.0",
+    "react-native": "0.61.5",
     "react-native-test-app": "../"
   }
 }
