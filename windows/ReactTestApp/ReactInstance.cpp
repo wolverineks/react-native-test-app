@@ -16,7 +16,7 @@ namespace ReactTestApp
     {
         auto instanceSettings = reactNativeHost_.InstanceSettings();
         instanceSettings.UseLiveReload(source == JSBundleSource::DevServer);
-        instanceSettings.UseWebDebugger(source == JSBundleSource::DevServer);
+        instanceSettings.UseWebDebugger(false);
         instanceSettings.UseFastRefresh(source == JSBundleSource::DevServer);
 
         switch (source) {

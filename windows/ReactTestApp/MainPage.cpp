@@ -120,7 +120,7 @@ namespace winrt::ReactTestApp::implementation
     {
         AppTitle().Text(to_hstring(component.displayName.value_or(component.appKey)));
 
-        ReactRootView().ComponentName(to_hstring(component.appKey));
+        ReactRootView().ComponentName({});
         ReactRootView().InitialProps(
             [&initialProps = component.initialProperties](IJSValueWriter const &writer) {
                 if (initialProps.has_value()) {
@@ -133,6 +133,7 @@ namespace winrt::ReactTestApp::implementation
                     writer.WriteObjectEnd();
                 }
             });
+        ReactRootView().ComponentName(to_hstring(component.appKey));
     }
 
     void MainPage::SetUpTitleBar()
