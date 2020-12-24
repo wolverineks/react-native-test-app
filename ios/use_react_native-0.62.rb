@@ -41,7 +41,10 @@ def add_flipper_pods!(versions = {})
 end
 
 def include_react_native!(react_native:, target_platform:, project_root:, flipper_versions:)
-  add_flipper_pods!(flipper_versions) if target_platform == :ios && flipper_versions
+  if target_platform == :ios && flipper_versions
+    add_flipper_pods!(flipper_versions)
+    use_flipper_plugin_react_native_performance!(project_root)
+  end
 
   pod 'FBLazyVector', :path => "#{react_native}/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "#{react_native}/Libraries/FBReactNativeSpec"

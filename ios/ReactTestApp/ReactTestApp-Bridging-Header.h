@@ -28,6 +28,7 @@
 #import <FlipperKitReactPlugin/FlipperKitReactPlugin.h>
 #import <FlipperKitUserDefaultsPlugin/FKUserDefaultsPlugin.h>
 #import <SKIOSNetworkPlugin/SKIOSNetworkAdapter.h>
+#import <flipper-plugin-react-native-performance/FlipperReactPerformancePlugin.h>
 #endif
 
 #import "React+Compatibility.h"

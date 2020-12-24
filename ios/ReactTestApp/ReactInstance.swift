@@ -87,6 +87,7 @@ final class ReactInstance: NSObject, RCTBridgeDelegate {
                 flipper.add(FKUserDefaultsPlugin(suiteName: nil))
                 flipper.add(FlipperKitReactPlugin())
                 flipper.add(FlipperKitNetworkPlugin(networkAdapter: SKIOSNetworkAdapter()))
+                flipper.add(FlipperReactPerformancePlugin.sharedInstance())
                 flipper.start()
             }
         #endif
@@ -106,6 +107,10 @@ final class ReactInstance: NSObject, RCTBridgeDelegate {
             }
             RTATriggerReloadCommand(bridge, "ReactTestApp")
         } else if let bridge = RCTBridge(delegate: self, launchOptions: nil) {
+            #if USE_FLIPPER
+                FlipperReactPerformancePlugin.sharedInstance().setBridge(bridge)
+            #endif
+
             self.bridge = bridge
 
             NotificationCenter.default.post(

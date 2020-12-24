@@ -4181,6 +4181,11 @@ flatted@^2.0.0:
   resolved "https://registry.npmjs.org/flatted/-/flatted-2.0.2.tgz#4575b21e2bcee7434aa9be662f4b7b5f9c2b5138"
   integrity sha512-r5wGx7YeOwNWNlCA0wQ86zKyDLMQr+/RB8xy74M4hTphfmjlijTSSXGuH8rnvKZnfT9i+75zmd8jcKdMR4O6jA==
 
+flipper-plugin-react-native-performance@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.npmjs.org/flipper-plugin-react-native-performance/-/flipper-plugin-react-native-performance-0.5.0.tgz#7f33ca9d1d8f4cbccdb82633ed4f9bfd807859a3"
+  integrity sha512-QsxoyE4m1MrJeprOk6j3rFS8I9BVuI3Y+TnhvOiCpCMf46MukJKFRVtveR0rgdXe/o3tuSdquyToYE8IuvWY6A==
+
 flush-write-stream@^1.0.0:
   version "1.1.1"
   resolved "https://registry.npmjs.org/flush-write-stream/-/flush-write-stream-1.1.1.tgz#8dd7d873a1babc207d94ead0c2e0e44276ebf2e8"

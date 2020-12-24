@@ -2354,6 +2354,11 @@ flagged-respawn@^1.0.0:
   resolved "https://registry.npmjs.org/flagged-respawn/-/flagged-respawn-1.0.1.tgz#e7de6f1279ddd9ca9aac8a5971d618606b3aab41"
   integrity sha512-lNaHNVymajmk0OJMBn8fVUAU1BtDeKIqKoVhk4xAALB57aALg6b4W0MfJ/cUE0g9YBXy5XhSlPIpYIJ7HaY/3Q==
 
+flipper-plugin-react-native-performance@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.npmjs.org/flipper-plugin-react-native-performance/-/flipper-plugin-react-native-performance-0.5.0.tgz#7f33ca9d1d8f4cbccdb82633ed4f9bfd807859a3"
+  integrity sha512-QsxoyE4m1MrJeprOk6j3rFS8I9BVuI3Y+TnhvOiCpCMf46MukJKFRVtveR0rgdXe/o3tuSdquyToYE8IuvWY6A==
+
 for-in@^1.0.1, for-in@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"

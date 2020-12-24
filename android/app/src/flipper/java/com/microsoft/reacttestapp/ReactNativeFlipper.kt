@@ -16,6 +16,7 @@ import com.facebook.react.ReactInstanceManager
 import com.facebook.react.ReactInstanceManager.ReactInstanceEventListener
 import com.facebook.react.bridge.ReactContext
 import com.facebook.react.modules.network.NetworkingModule
+import com.oblador.flipperperformanceplugin.FlipperReactPerformancePlugin
 
 @Suppress("unused")
 object ReactNativeFlipper {
@@ -30,6 +31,7 @@ object ReactNativeFlipper {
         client.addPlugin(DatabasesFlipperPlugin(context))
         client.addPlugin(SharedPreferencesFlipperPlugin(context))
         client.addPlugin(CrashReporterPlugin.getInstance())
+        client.addPlugin(FlipperReactPerformancePlugin(reactInstanceManager))
 
         val networkFlipperPlugin = NetworkFlipperPlugin()
         NetworkingModule.setCustomClientBuilder { builder ->
